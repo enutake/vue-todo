@@ -2,6 +2,10 @@
 
   const todoListData = JSON.parse(localStorage.getItem('todo') as string);
 
+  const open = () => {
+    console.log("リンクを無視してクリックできる")
+  }
+
 </script>
 <template>
       <q-list bordered separator class="todolist">
@@ -10,6 +14,11 @@
             <q-item-section>
               <q-item-label overline>{{ todo.title }}</q-item-label>
               <q-item-label>{{ todo.description }}</q-item-label>
+            </q-item-section>
+            <q-item-section top side>
+              <div class="text-grey-8 q-gutter-xs">
+                <q-btn size="12px" flat dense round icon="delete" @click.prevent @click="open"/>
+              </div>
             </q-item-section>
           </q-item>
         </div>
