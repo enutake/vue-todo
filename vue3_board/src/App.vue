@@ -28,7 +28,7 @@
           <q-list>
             <q-item to="/">HOME</q-item>
             <q-item to="/list">LIST</q-item>
-            <q-item to="/register">REGISER</q-item>
+            <q-item to="/register">REGISTER</q-item>
           </q-list>
         </q-scroll-area>
       </q-drawer>
