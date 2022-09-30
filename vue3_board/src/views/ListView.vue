@@ -8,7 +8,7 @@
     'description': string,
   }
 
-  const todoListData = JSON.parse(localStorage.getItem('todo') as string);
+  const todoListData = ref(JSON.parse(localStorage.getItem('todo') as string));
 
   let showConfirm = ref(false);
   let selectedTodo = ref<Todo>();
@@ -19,7 +19,10 @@
   }
 
   const execDelete = () => {
-    console.log('emit success')
+    todoListData.value = todoListData.value.filter((todo: Todo) => {
+      return todo.id !== selectedTodo.value?.id;
+    })
+    localStorage.setItem('todo', JSON.stringify(todoListData.value));
   }
 
 </script>
