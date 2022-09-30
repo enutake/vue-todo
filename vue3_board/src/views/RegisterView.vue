@@ -22,7 +22,7 @@
     }
 
     localStorage.setItem('todo', JSON.stringify(todoListData));
-      router.push({'name': 'list'});
+    router.push({'name': 'list'});
   }
 </script>
 
