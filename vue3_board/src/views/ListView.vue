@@ -2,12 +2,24 @@
   import { ref } from 'vue';
   import DeleteDialog from '../components/DeleteDialog.vue';
 
+  interface Todo {
+    'id': number,
+    'title': string,
+    'description': string,
+  }
+
   const todoListData = JSON.parse(localStorage.getItem('todo') as string);
 
   let showConfirm = ref(false);
+  let selectedTodo = ref<Todo>();
 
-  const open = () => {
+  const open = (todo: Todo) => {
     showConfirm.value = true;
+    selectedTodo.value = todo;
+  }
+
+  const execDelete = () => {
+    console.log('emit success')
   }
 
 </script>
@@ -21,7 +33,7 @@
             </q-item-section>
             <q-item-section top side>
               <div class="text-grey-8 q-gutter-xs">
-                <q-btn size="12px" flat dense round icon="delete" @click.prevent @click="open"/>
+                <q-btn size="12px" flat dense round icon="delete" @click.prevent @click="open(todo)"/>
               </div>
             </q-item-section>
           </q-item>
@@ -33,7 +45,7 @@
         </router-link>
       </q-page-sticky>
 
-      <DeleteDialog v-model="showConfirm"/>
+      <DeleteDialog v-model="showConfirm" :todo="selectedTodo" @execDelete="execDelete"/>
 </template>
 
 <style>
