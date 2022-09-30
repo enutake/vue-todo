@@ -9,7 +9,7 @@
       <q-header reveal class="bg-primary">
         <q-toolbar>
           <q-btn flat @click="drawerLeft = !drawerLeft" round dense icon="menu" />
-          <q-toolbar-title>Header</q-toolbar-title>
+          <q-toolbar-title>TODO</q-toolbar-title>
         </q-toolbar>
       </q-header>
 
@@ -28,6 +28,7 @@
           <q-list>
             <q-item to="/">HOME</q-item>
             <q-item to="/list">LIST</q-item>
+            <q-item to="/register">REGISER</q-item>
           </q-list>
         </q-scroll-area>
       </q-drawer>

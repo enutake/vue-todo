@@ -31,7 +31,7 @@
 <template>
       <q-input clearable filled color="purple-12" v-model="title" label="title" />
       <q-input v-model="description" filled type="textarea" label='description'/>
-      <router-link :to="{name:'list', params:{id: todoListData[pageId-1].id}}">
+      <router-link :to="{name:'list'}">
         <q-btn flat color="primary" label="戻る" />
       </router-link>
       <q-btn color="primary" label="更新する" />

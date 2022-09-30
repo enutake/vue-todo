@@ -29,7 +29,9 @@
         </div>
       </q-list>
       <q-page-sticky position="bottom-right" :offset="[18, 18]">
-        <q-btn round color="primary" icon="add" />
+        <router-link :to="{name:'register'}">
+          <q-btn round color="primary" icon="add" />
+        </router-link>
       </q-page-sticky>
 </template>
 
