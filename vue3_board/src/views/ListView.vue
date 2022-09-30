@@ -1,9 +1,13 @@
 <script setup lang="ts">
+  import { ref } from 'vue';
+  import DeleteDialog from '../components/DeleteDialog.vue';
 
   const todoListData = JSON.parse(localStorage.getItem('todo') as string);
 
+  let showConfirm = ref(false);
+
   const open = () => {
-    console.log("リンクを無視してクリックできる")
+    showConfirm.value = true;
   }
 
 </script>
@@ -28,6 +32,8 @@
           <q-btn round color="primary" icon="add" />
         </router-link>
       </q-page-sticky>
+
+      <DeleteDialog v-model="showConfirm"/>
 </template>
 
 <style>
