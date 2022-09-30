@@ -1,6 +1,8 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import { useRoute } from 'vue-router';
+  import router from "../router";
+
 
   const todoListData = JSON.parse(localStorage.getItem('todo') as string);
 
@@ -9,7 +11,19 @@
   const title = ref<string>(todoListData[pageId-1].title);
   const description = ref<string>(todoListData[pageId-1].description);
 
-  
+  const update = () => {
+  let todoListData = JSON.parse(localStorage.getItem('todo') as string);
+  const todo = {
+      id: pageId,
+      title: title.value,
+      description: description.value
+    };
+    
+  todoListData[pageId-1] = todo;
+
+  localStorage.setItem('todo', JSON.stringify(todoListData));
+    router.push({'name': 'list'});
+  }
 </script>
 
 <template>
@@ -18,7 +32,7 @@
       <router-link :to="{name:'list'}">
         <q-btn flat color="primary" label="戻る" />
       </router-link>
-      <q-btn color="primary" label="更新する" />
+      <q-btn color="primary" label="更新する" @click="update"/>
 
 </template>
 
