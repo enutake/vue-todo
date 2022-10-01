@@ -4,24 +4,25 @@
   import router from "../router";
 
 
-  const todoListData = JSON.parse(localStorage.getItem('todo') as string);
-
+  const todoListData = ref(JSON.parse(localStorage.getItem('todo') as string));
   const pageId: number = Number(useRoute().params.id);
-
-  const title = ref<string>(todoListData[pageId-1].title);
-  const description = ref<string>(todoListData[pageId-1].description);
+  const targetTodo = todoListData.value.find((todo) => {
+    return todo.id === pageId;
+  })
+  const title = ref<string>(targetTodo.title);
+  const description = ref<string>(targetTodo.description);
 
   const update = () => {
-  let todoListData = JSON.parse(localStorage.getItem('todo') as string);
-  const todo = {
+    const todo = {
       id: pageId,
       title: title.value,
       description: description.value
     };
-    
-  todoListData[pageId-1] = todo;
 
-  localStorage.setItem('todo', JSON.stringify(todoListData));
+    const targetIndex = todoListData.value.findIndex((todo) => todo.id === pageId);
+    todoListData.value[targetIndex] = todo;
+    localStorage.setItem('todo', JSON.stringify(todoListData.value));
+
     router.push({'name': 'list'});
   }
 </script>
