@@ -29,21 +29,37 @@
 </script>
 
 <template>
-      <q-input clearable filled color="purple-12" v-model="title" label="title" />
-      <q-input v-model="description" filled type="textarea" label='description'/>
-      <router-link :to="{name:'list'}">
-        <q-btn flat color="primary" label="戻る" />
-      </router-link>
-      <q-btn color="primary" label="更新する" @click="update"/>
-
+    <div class="main-wrapper">
+        <h2 class="h2">タスク詳細</h2>
+        <div class="q-gutter-xs flex flex-center form-group">
+            <q-input class="title-input" clearable outlined v-model="title" label="タイトル" />
+            <q-input class="description-input" v-model="description" outlined type="textarea" label='詳細'/>
+            <div class="btn-group">
+                <router-link :to="{name:'list'}">
+                    <q-btn flat color="primary" label="戻る" />
+                </router-link>
+                <q-btn color="primary" label="登録する" @click="update"/>
+            </div>
+        </div>
+    </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+<style lang="scss">
+  .main-wrapper {
+    padding: 0 20px;
+    .form-group {
+      .title-input {
+        width: 230px;
+      }
+      .description-input {
+        width: 230px;
+      }
+      .btn-group {
+        margin-top: 20px;
+      }
+    }
   }
-}
+  .h2 {
+    font-size: 16px;
+  }
 </style>
