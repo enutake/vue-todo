@@ -1,12 +1,7 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import DeleteDialog from '../components/DeleteDialog.vue';
-
-  interface Todo {
-    'id': number,
-    'title': string,
-    'description': string,
-  }
+  import type { Todo } from '../types/Todo';
 
   const todoListData = ref(JSON.parse(localStorage.getItem('todo') as string));
 

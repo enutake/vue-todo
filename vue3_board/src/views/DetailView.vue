@@ -2,11 +2,12 @@
   import { ref } from 'vue';
   import { useRoute } from 'vue-router';
   import router from "../router";
+  import type { Todo } from '../types/Todo';
 
 
   const todoListData = ref(JSON.parse(localStorage.getItem('todo') as string));
   const pageId: number = Number(useRoute().params.id);
-  const targetTodo = todoListData.value.find((todo) => {
+  const targetTodo = todoListData.value.find((todo: Todo) => {
     return todo.id === pageId;
   })
   const title = ref<string>(targetTodo.title);
@@ -19,7 +20,7 @@
       description: description.value
     };
 
-    const targetIndex = todoListData.value.findIndex((todo) => todo.id === pageId);
+    const targetIndex = todoListData.value.findIndex((todo: Todo) => todo.id === pageId);
     todoListData.value[targetIndex] = todo;
     localStorage.setItem('todo', JSON.stringify(todoListData.value));
 
