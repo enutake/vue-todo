@@ -1,13 +1,14 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import router from "../router";
+  import type { Todo } from '../types/Todo';
 
   const title = ref<string>();
   const description = ref<string>();
   
   const register = () => {
     let todoListData = JSON.parse(localStorage.getItem('todo') as string);
-    const maxId: number = todoListData ? Math.max.apply(null,todoListData.map(function(todo){return todo.id;})) : 0;
+    const maxId: number = todoListData ? Math.max.apply(null,todoListData.map(function(todo: Todo){return todo.id;})) : 0;
 
     const newTodo = {
         id: maxId + 1,
