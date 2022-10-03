@@ -26,9 +26,9 @@
       >
         <q-scroll-area class="fit">
           <q-list>
-            <q-item to="/">HOME</q-item>
-            <q-item to="/list">LIST</q-item>
-            <q-item to="/register">REGISTER</q-item>
+            <q-item to="/">ホーム</q-item>
+            <q-item to="/list">タスク一覧</q-item>
+            <q-item to="/register">タスク新規登録</q-item>
           </q-list>
         </q-scroll-area>
       </q-drawer>
